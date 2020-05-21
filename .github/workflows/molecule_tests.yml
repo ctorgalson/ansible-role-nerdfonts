@@ -1,0 +1,30 @@
+name: Molecule Test
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [3.7]
+
+    steps:
+      - name: Checkout project repo.
+        uses: actions/checkout@v1
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies.
+        run: |
+          sudo apt-get update -yqq
+          sudo apt-get install python3-setuptools -yqq
+          python -m pip install --upgrade pip
+          sudo ./scripts/install-python-dependencies.sh
+
+      - name: Test with molecule.
+        run: |
+          molecule test
