@@ -39,7 +39,7 @@ ANSIBLELINT_RETURN="$?"
 # Run flake8 check.
 echo 'Starting flake8...'
 
-FLAKE8_OUTPUT=$(flake8 ./plugins/modules/*)
+FLAKE8_OUTPUT=$(flake8 ./tests/*/*.py)
 FLAKE8_RETURN="$?"
 
 # Run shellcheck check.
