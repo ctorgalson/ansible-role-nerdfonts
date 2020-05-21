@@ -1,5 +1,7 @@
 # Ansible Role NerdFonts
 
+![](https://github.com/ctorgalson/ansible-role-nerdfonts/workflows/Molecule%20Test/badge.svg)
+
 An Ansible role for installing [Nerd Fonts](https://www.nerdfonts.com/) on Linux and macOS.
 
 In the current iteration, downloads individual font files directly from Github,
