@@ -9,7 +9,11 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
 
 
-""" ansible-role-nerdfonts (ctorgalson.nerdfonts) Default scenario tests. """
+"""
+ansible-role-nerdfonts (ctorgalson.nerdfonts) Default scenario tests.
+
+Note: we are only testing Linux-based systems here (and in Molecule generally).
+"""
 
 
 def test_local_share_fonts_directory(host):
