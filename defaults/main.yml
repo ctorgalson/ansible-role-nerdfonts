@@ -6,7 +6,7 @@ nf_user: ""
 # Replace this with the name of the group of the user the font(s) will be
 # installed for. On Linux systems this will usually be identical to nf_user.
 # On macOS systems, it should usually be "staff".
-nf_group: ""
+# nf_group: ""
 # Font installation directory for Linux.
 nf_linux_fonts_dir: "/home/{{ nf_user }}/.local/share/fonts/NerdFonts"
 # Font installation directory for macOS.
