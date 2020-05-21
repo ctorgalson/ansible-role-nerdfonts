@@ -1,10 +1,17 @@
 ---
 # defaults file for ansible-role-nerdfonts
 
-nf_user: "molecule"
-nf_group: "molecule"
+# Replace this with the name of the user the font(s) will be installed for.
+nf_user: ""
+# Replace this with the name of the group of the user the font(s) will be
+# installed for. On Linux systems this will usually be identical to nf_user.
+# On macOS systems, it should usually be "staff".
+nf_group: ""
+# Font installation directory for Linux.
 nf_linux_fonts_dir: "/home/{{ nf_user }}/.local/share/fonts/NerdFonts"
+# Font installation directory for macOS.
 nf_macos_fonts_dir: "/Users/{{ nf_user }}/Library/Fonts"
+# The base URL for downloading raw files from the original Nerd Fonts repo.
 nf_github_raw_patched_fonts: "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts"
 # A list of paths relative to nf_github_raw_patched_fonts.
 nf_single_fonts: []
