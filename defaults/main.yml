@@ -1,2 +1,10 @@
 ---
 # defaults file for ansible-role-nerdfonts
+
+nf_user: "molecule"
+nf_group: "molecule"
+nf_linux_fonts_dir: "/home/{{ nf_user }}/.local/share/fonts/NerdFonts"
+nf_macos_fonts_dir: "/Users/{{ nf_user }}/Library/Fonts"
+nf_github_raw_patched_fonts: "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts"
+# A list of paths relative to nf_github_raw_patched_fonts.
+nf_single_fonts: []

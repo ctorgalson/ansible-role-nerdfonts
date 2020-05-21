@@ -1,6 +1,10 @@
 ---
 - name: Converge
   hosts: all
+  vars:
+    nf_single_fonts:
+     - "UbuntuMono/Regular/complete/Ubuntu Mono Nerd Font Complete.ttf"
+     - "AurulentSansMono/complete/AurulentSansMono-Regular Nerd Font Complete.otf"
   tasks:
     - name: "Include ansible-role-nerdfonts"
       include_role:
