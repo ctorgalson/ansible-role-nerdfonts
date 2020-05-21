@@ -1,0 +1,20 @@
+---
+# single-font download tasks for ansible-role-nerdfonts
+
+- name: Determine directory name for font family.
+  set_fact:
+    nf_font_family_dir: "{{ font|regex_replace('^([^/]+)/.*$', '\\1') }}"
+
+- name: Create directory for {{ nf_font_family_dir }} fonts.
+  file:
+    owner: "{{ nf_user }}"
+    group: "{{ nf_group }}"
+    path: "{{ nf_fonts_dir }}/{{ nf_font_family_dir }}"
+    state: directory
+
+- name: Download {{ font|basename }}.
+  get_url:
+    dest: "{{ nf_fonts_dir }}/{{ nf_font_family_dir }}/{{ font|basename }}"
+    group: "{{ nf_user }}"
+    owner: "{{ nf_user }}"
+    url: "{{ nf_github_raw_patched_fonts }}/{{ font | regex_replace(' ', '%20') }}"
