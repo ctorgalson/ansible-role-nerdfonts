@@ -8,13 +8,13 @@
 - name: Create directory for {{ nf_font_family_dir }} fonts.
   file:
     owner: "{{ nf_user }}"
-    group: "{{ nf_group }}"
+    group: "{{ nf_group|default(omit) }}"
     path: "{{ nf_fonts_dir }}/{{ nf_font_family_dir }}"
     state: directory
 
 - name: Download {{ font|basename }}.
   get_url:
     dest: "{{ nf_fonts_dir }}/{{ nf_font_family_dir }}/{{ font|basename }}"
-    group: "{{ nf_user }}"
+    group: "{{ nf_group|default(omit) }}"
     owner: "{{ nf_user }}"
     url: "{{ nf_github_raw_patched_fonts }}/{{ font | regex_replace(' ', '%20') }}"

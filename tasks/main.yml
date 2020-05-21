@@ -7,7 +7,7 @@
 
 - name: Ensure fonts directory exists.
   file:
-    group: "{{ nf_group }}"
+    group: "{{ nf_group|default(omit) }}"
     owner: "{{ nf_user }}"
     path: "{{ nf_fonts_dir }}"
     recurse: true

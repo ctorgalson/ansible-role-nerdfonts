@@ -3,7 +3,7 @@
   hosts: all
   vars:
     nf_user: "molecule"
-    nf_group: "{{ nf_user }}"
+    nf_group: "molecule"
     nf_single_fonts:
      - "UbuntuMono/Regular/complete/Ubuntu Mono Nerd Font Complete.ttf"
      - "AurulentSansMono/complete/AurulentSansMono-Regular Nerd Font Complete.otf"
