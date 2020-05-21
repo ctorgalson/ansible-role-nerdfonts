@@ -1,38 +1,45 @@
-Role Name
-=========
+# Ansible Role NerdFonts
 
-A brief description of the role goes here.
+An Ansible role for installing [Nerd Fonts](https://www.nerdfonts.com/) on Linux and macOS.
 
-Requirements
-------------
+In the current iteration, downloads individual font files directly from Github,
+but does not clone the repository (because it's enormous!)
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+## Requirements
 
-Role Variables
---------------
+No special requirements.
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+## Role Variables
 
-Dependencies
-------------
+| Variable name                 | Default value | Description |
+|-------------------------------|---------------|-------------|
+| `nf_user`                     | ``            | The name of the user to install the fonts for. Required. |
+| `nf_group`                    | ``            | The group of the user to install the fonts for. Required. |
+| `nf_linux_fonts_dir`          | `/home/{{ nf_user }}/.local/share/fonts/NerdFonts` | The default location to install fonts on Linux systems. |
+| `nf_macos_fonts_dir`          | `/Users/{{ nf_user }}/Library/Fonts` | The default location to install fonts on macOS systems. |
+| `nf_github_raw_patched_fonts` | `https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts` | The remote directory from which to download raw font files. |
+| `nf_single_fonts`             | `[]` | A list of paths to individual fonts to download, relative to `nf_github_raw_patched_fonts` (see Example Playbook below). Required. |
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+## Dependencies
 
-Example Playbook
-----------------
+No special dependencies.
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+## Example Playbook
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+    ---
+    - name: Ansible Role NerdFonts sample playbook.
+      hosts: all
+      vars:
+        nf_user: "molecule"
+        nf_group: "{{ nf_user }}"
+        nf_single_fonts:
+         - "UbuntuMono/Regular/complete/Ubuntu Mono Nerd Font Complete.ttf"
+         - "AurulentSansMono/complete/AurulentSansMono-Regular Nerd Font Complete.otf"
+      tasks:
+        - name: "Include ansible-role-nerdfonts"
+          include_role:
+            name: "ansible-role-nerdfonts"
 
-License
--------
+## License
 
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+GPLv3
