@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include ansible-role-nerdfonts"
+      include_role:
+        name: "ansible-role-nerdfonts"
