@@ -15,10 +15,10 @@ No special requirements.
 
 | Variable name                 | Default value | Description |
 |-------------------------------|---------------|-------------|
-| `nf_user`                     | `''`            | The name of the user to install the fonts for. Required. |
-| `nf_group`                    | `not set`            | The group of the user to install the fonts for. Required. |
-| `nf_linux_fonts_dir`          | `/home/{{ nf_user }}/.local/share/fonts/NerdFonts` | The default location to install fonts on Linux systems. |
-| `nf_macos_fonts_dir`          | `/Users/{{ nf_user }}/Library/Fonts` | The default location to install fonts on macOS systems. |
+| `nf_user`                     | `{{ ansible_user_id }}`            | The name of the user to install the fonts for. Required. |
+| `nf_group`                    | `{{ ansible_user_gid }}`            | The group of the user to install the fonts for. Required. |
+| `nf_linux_fonts_dir`          | `{{ ansible_user_dir }}/.local/share/fonts/NerdFonts` | The default location to install fonts on Linux systems. |
+| `nf_macos_fonts_dir`          | `{{ ansible_user_dir }}/Library/Fonts` | The default location to install fonts on macOS systems. |
 | `nf_github_raw_patched_fonts` | `https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts` | The remote directory from which to download raw font files. |
 | `nf_single_fonts`             | `[]` | A list of paths to individual fonts to download, relative to `nf_github_raw_patched_fonts` (see Example Playbook below). Required. |
 
